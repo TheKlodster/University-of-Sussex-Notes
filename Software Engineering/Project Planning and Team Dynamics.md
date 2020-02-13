@@ -30,7 +30,7 @@ Set up Milestones! Milestones show how the project is proceeding. It's good for 
 
 ### PERT Chart
 --------------------------------------------------
-<center> **P**rogram **E**valuation and **R**eview **T**echnique <br>
+<center> <b>P</b>rogram <b>E</b>valuation and <b>R</b>eview <b>T</b>echnique <br>
 <img src="https://d2slcw3kip6qmk.cloudfront.net/marketing/blog/Updates/pert-chart-example.png"> </center> <br>
 
 **Critical Path** - a chain of tasks which must be completed on time if the project is to finish at the time predicted. <br>
