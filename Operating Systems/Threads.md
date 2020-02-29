@@ -1,4 +1,4 @@
-*Lecture 4, Thursday 6th February*
+*Lecture 4 & 5 Thursday 6th, Tuesday 11th*
 # Threads
 Many processes can be disadvantageous due to process management and resource allocation overheads. A thread is a unit for **scheduling only**.
 - Thread Control Block : Thread ID, state, context.
