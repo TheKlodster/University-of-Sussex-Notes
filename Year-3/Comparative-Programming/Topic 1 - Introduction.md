@@ -1,7 +1,7 @@
 # Introduction
 
 ### Programming Paradigms
-- **Imperative Languages**: programs are decomposed into computation steps, and routines are used to modularise the program/ Such as:
+- **Imperative Languages**: programs are decomposed into computation steps, and routines are used to modularise the program. Such as:
 	- variables, assignment, iteration and procedures.
 	- E.g. Fortran, Pascal and C (Java has an imperative *subset*).
 - **Functional Languages**: *what* is computed, rather than *how*. Emphasise the use of expressions evaluated by simplification.
