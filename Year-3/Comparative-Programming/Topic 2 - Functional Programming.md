@@ -1,6 +1,12 @@
 # Topic 2: Functional Programming
 
-Slide 1
+Programming that consists entirely of functions. The focus is *what* is to be computed, not *how* it should be computed.
+
+| Advantages | Disadvantages |
+| ---------- | ------------- |
+| - Shorter Programs | - Often slower than imperative programs. |
+| - Easier to understand | |
+| - Easier to design & maintain than imperative programs. | |
 
 
 ### Syntax of Functional Programs
@@ -38,6 +44,23 @@ Most popular strategies:
 - *Call-by-name* (normal order): reduce first the application using the definition of the funtion, then the argument.
 - *Call-by-value* (applicative order): evaluate first the argument and then the application using the definition of the function.
 
+<center>
+An example reduction graph for the expression: <code>square (3+4)</code>
+
+<img src=https://i.gyazo.com/0e569dbfd5be2cb9d9df306c3d92d0b2.png>
+
+This has the shortest path for *call-by-value*.
+
+Note: we underline each **reducible expression** (*redex*), all reductions lead to the same answer, and some reductions are longer than others.
+</center>
+
+<center>
+
+<img src=https://i.gyazo.com/f76bc32e9506e86e3195612963fbfd31.png>
+
+In this case, call-by-value gives the longest reduction path.
+
+</center>
 
 (fortytwo infinity, callbyname finds value, gets fortytwo, callbyvalue will not terminate.)
 
@@ -46,5 +69,3 @@ Call-by-value is in general more efficient, but may fail to find a value.
 
 Haskell uses *lazy evaluation*, which guarantees that if an expression has a normal form, the evaluator will find it: <br>
 <code>lazy evaluation = call-by-name + sharing</code>
-
-slide 13
