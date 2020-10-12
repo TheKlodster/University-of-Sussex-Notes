@@ -69,3 +69,115 @@ Call-by-value is in general more efficient, but may fail to find a value.
 
 Haskell uses *lazy evaluation*, which guarantees that if an expression has a normal form, the evaluator will find it: <br>
 <code>lazy evaluation = call-by-name + sharing</code>
+
+### Syntax of Function Definitions
+Functions are defined in terms of equations. <br>
+Example: <br>
+<code>square x = x * x</code> <br>
+<code>min x y = if x <= y then x else y</code>
+
+We can also use *conditional equations* <br>
+```
+min x y
+	| x <= y = x
+	| x > y = y>
+sign x
+	| x < 0 = -1
+	| x == 0 = 0
+	| x > 0 = 1
+```
+
+This is equivalent to: <br>
+<code>if x < 0 then -1 else if x == 0 then 0 else </code> ew not as clear.
+
+Error is a predefined function that takes a string as argument. When evaluated it causes immediate termination of the evaluator and dispalys the string.
+
+### Local Definitions
+We can write:
+<code>f x = a + 1 where a = x/2</code> which is the same as <code>f x = let a = x/2 in a + 1</code>
+
+<code>let</code> and <code>where</code>  are used to introduce **local definitions**.
+
+```
+f x = square (successor x) where
+	square z = z * z; successor x = x + 1
+```
+
+### Functional Composition
+Combine functions through *composition*, denoted by <code>.</code> as in <code>f . g</code>. <br>
+Composition is itself a function:
+```
+(.) :: (B -> r) -> (a -> B) -> (a -> r)
+(f . g) x = f (g x)
+```
+Example:
+```
+square :: Integer -> Integer
+quad = square . square
+```
+
+### Types: General Concepts
+Predefined types:
+- Basic data types: <code>Bool, Char, Int, Integer, Float</code>...
+- Structured types: <code>[Integer]</code> is the type of *lists* of integers.
+- Function types: <code>(Integer -> Integer) -> Integer</code> are *arrow types*
+
+### Polymorphism
+Type systems can be
+- *monomorphic*: every expression has at most one type.
+- *polymorphic*: some expressions have more than one type.
+
+**Overloading** is the notion where several functions, with different types, share the same name.
+
+### Disjoint Sums
+We can define several constructors in a type. <br>
+Example:
+<code>data Nat = Zero | Succ Nat</code> <br>
+<code>Zero</code> and <code>Succ</code> are *constructors*. In this case, they are not polymorphic, but we could define a type with polymorphic constructors.
+
+### Constructing Data types: Pairs (x,y)
+
+Components do not need to have the same type: <code>(2, True)</code>.
+- extract 'c' from <code>((True, 'c'), 42)</code> &rarr; <code>snd (fst ( ))</code>.
+- extract 'c' from <code>(True, 'c', 42, (3,4))</code> &rarr; <code>f x = a b c d</code>.
+
+### Lists
+Strings in Haskell are just: <code>Char</code>
+
+<code>:,[],head,tail,null,length</code>
+
+```
+6:[7,8]				---> [6,7,8]
+[1,2,3] ++ [4,5]	---> [1,2,3,4,5]
+'h':"ello"			---> "hello"
+"h" ++ "ello"		---> "hello"
+[1..10]				---> [1,2,3,4,5,6,7,8,9,10]
+head [3..]			---> [3]
+[3..]				---> [3,4,5,6,7,...,...,...]
+[x*x | x <- [1,2,3]]	---> [1*1, 2*2, 3*3]
+```
+
+Write a function to sum all the elements of a list.<br>
+Example: <code>sum [1..10] = 55</code>
+
+First attempt:<br>
+<code>sum x = if null x then 0 else head x+sum (tail x)</code>
+
+Guarded equations:
+```
+sum x
+	| null x = 0
+	| otherwise = head x + sum (tail x)
+```
+
+Pattern matching:
+```
+sum [] = 0
+sum (h:t) = h+sum t
+```
+
+### Algebraic Data Types
+We can define our own data types:
+- <code>data Bool = True | False</code>
+- <code>data Suit = Club | Diamond | Heart | Spade</code>
+- <code> data List a = nil | Cons a (List a)</code>
