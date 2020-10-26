@@ -53,3 +53,34 @@ Abstractions represent functions, which can be applied to arguments. The main co
 It reduces to the term <code>M{x -> N}</code> where it is the term obtained when we substitute <code>x</code> by <code>N</code> taking into account bound variables.
 </center>
 
+
+### Substitution
+Substitution is a special kind of replacement: M{x &rarr; N} means replace all *free* occurrences of x in M by the term in N.
+
+Question: why only the free occurrences? <br>
+In case there are occurrences of y in x, for instance.
+
+Some examples (conversion, reduction, substitution).
+
+α-converion:
+- <code>λx.x = <sub>α</sub>λy.y</code>
+- <code>λx.λy.xy = <sub>α</sub>λz<sub>1</sub>.λz<sub>2</sub>.z<sub>1</sub>z<sub>2</sub></code>
+
+β-reduction:
+- <code>(λx.λy.xy)(λx.x) &rarr; <sub>β</sub>λy.(λx.x)y &rarr; <sub>β</sub>λy.y</code>
+
+## Normal Forms
+**Normal forms** are terms that does not contain any redex, and cannot be reduced anymore.
+
+A term that can be reduced to normal form is *normalisable*.
+
+**Weak Head Normal Form (WHNF)**: Stop reducing when there are no redexes left, but without reducing under an abstraction.
+
+<code>(λx.xx)(λx.xx)</code> does not have a normal form!!!
+
+## Properties of Computations
+- **Confluence**: If M &rarr; <sub>β</sub><sup>\*</sup>M<sub>1</sub>, and M &rarr; <sub>β</sub><sup>\*</sup>M<sub>2</sub>, then there exists a term M<sub>3</sub> such that M<sub>1</sub> &rarr; <sub>β</sub><sup>\*</sup>M<sub>3</sub> and M<sub>2</sub> &rarr; <sub>β</sub><sup>\*</sup>M<sub>3</sub>.
+- **Normalisation**: exists a sequence of reductions which terminates.
+- **Strong Normalisation (or Termination)**: all reduction sequences terminate.
+
+The λ-calculus is confluent but not normalising (or strongly normalising). Confluence *implies* unicity of normal forms: each λ-term has at most one normal form.
