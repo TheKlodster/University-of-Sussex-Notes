@@ -84,3 +84,13 @@ A term that can be reduced to normal form is *normalisable*.
 - **Strong Normalisation (or Termination)**: all reduction sequences terminate.
 
 The λ-calculus is confluent but not normalising (or strongly normalising). Confluence *implies* unicity of normal forms: each λ-term has at most one normal form.
+
+### Strategies for Reduction
+The leftmost-outermost strategy finds the normal form, if there is one.
+
+## Continuation Passing Style (CPS)
+Every function takes an extra argument: a continuation. <br>
+A *continuation* is a function which consumes the result of a function, and produces the final answer. It represents the remainder of the current computation.
+
+### Tail Recursion
+
